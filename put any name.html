@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Love Question</title>
+<style>
+body {
+    background: white;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+#gif {
+    width: 250px;
+    margin-top: 30px;
+}
+
+#question {
+    font-size: 28px;
+    margin: 20px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
+
+/* Colored buttons */
+#yesBtn {
+    background-color: #28a745; /* green */
+}
+
+#noBtn {
+    background-color: #dc3545; /* red */
+}
+</style>
+</head>
+
+<body>
+
+<img id="gif" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
+
+<h1 id="question">Do you love me? ❤️</h1>
+
+<button id="yesBtn" onclick="yesClick()">YES</button>
+<button id="noBtn" onclick="noClick()">NO</button>
+
+<script>
+let count = 0;
+
+const questions = [
+    "Think again 😏💭",
+    "Please think again 🥺",
+    "Plsssssss click on YES 😭❤️",
+    "Ab kya krogi madam ji, chup chap YES pe click kr do 😤❤️"
+];
+
+function yesClick() {
+    document.body.innerHTML = `
+        <img src="https://media.giphy.com/media/0cdbJBHZXG2hm132X2/giphy.gif" width="300">
+        <h1 style="font-size:40px;">I love you too babyy 💖🥰</h1>
+    `;
+}
+
+function noClick() {
+    let yesBtn = document.getElementById("yesBtn");
+    let noBtn = document.getElementById("noBtn");
+
+    if (count < questions.length) {
+        document.getElementById("question").innerText = questions[count];
+
+        count++;
+
+        let yesSize = 20 + count * 10;
+        let noSize = 20 - count * 3;
+
+        yesBtn.style.fontSize = yesSize + "px";
+        noBtn.style.fontSize = noSize + "px";
+
+        // Remove NO button on last question
+        if (count === questions.length) {
+            noBtn.style.display = "none";
+        }
+    }
+}
+</script>
+
+</body>
+</html>
